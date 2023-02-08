@@ -10,30 +10,38 @@ namespace EmployeeWage
     {
         public void Wage()
         {
-            const int fullTime = 1;
-            const int partTime = 2;
+            int fullTime = 1;
+            int partTime = 2;
             int empHr = 0;
             int empWage = 0;
-            int wagePerHr = 20;
-            Random random = new Random();
-            int attendCheck = random.Next(0, 3);
-            switch (attendCheck)
+            int wagePerHR = 20;
+            int totalWorkingdays = 20;
+            int totalWage = 0;
+            for (int i = 0; i < totalWorkingdays; i++)
             {
-                case fullTime:
+
+                Random random = new Random();
+                int attendCheck = random.Next(0, 3);
+                if (attendCheck == fullTime)
+                {
                     empHr = 8;
-                    Console.WriteLine("\nFull time employee.");
-                    break;
-                case partTime:
+                    Console.WriteLine($"\nFull time employee.");
+                }
+                else if (attendCheck == partTime)
+                {
                     empHr = 4;
                     Console.WriteLine("\nPart time employee.");
-                    break;
-                default:
+                }
+                else
+                {
                     empHr = 0;
-                    Console.WriteLine("\nThe Employee is absent.");
-                    break;
+                    Console.WriteLine("\nThe employee is absent.");
+                }
+                empWage = empHr * wagePerHR;
+                Console.WriteLine($"\nEmployee wage is {empWage}");
+                totalWage = totalWage + empWage;
             }
-            empWage = empHr * wagePerHr;
-            Console.WriteLine($"\nThe Empployee wage is {empWage}");
+            Console.WriteLine($"\nTotal wage for 20 working days is  {totalWage}");
         }
     }
 }
