@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeWage
 {
+    //Already Using class
     public class Emp
     {
         public void Wage()
@@ -21,7 +22,6 @@ namespace EmployeeWage
             int totalDay = 0;
             do
             {
-
                 Random random = new Random();
                 int attendCheck = random.Next(0, 3);
                 if (attendCheck == fullTime)
