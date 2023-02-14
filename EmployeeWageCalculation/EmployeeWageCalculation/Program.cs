@@ -3,6 +3,8 @@ using System;
 
 namespace EmployeeWageCalculation
 {
+    //Already Using class
+
     class Program
     {
         public static void Main(string[] args)
