@@ -11,8 +11,8 @@ namespace EmployeeWageCalculation
         {
             Console.WriteLine("Welcome to Employee wage Calculation ");
             Emp emp = new Emp();
-            emp.Wage();
-
+            emp.Wage("TCS", 20);
+            emp.Wage("Wipro", 30);
         }
     }
 }
