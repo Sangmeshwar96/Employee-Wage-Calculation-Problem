@@ -16,14 +16,12 @@ namespace EmployeeWageCalculation
             this.companyEmpWageList = new LinkedList<CompanyEmpWage>();
             this.companyToEmpWageMap = new Dictionary<string, CompanyEmpWage>();
         }
-
         public void AddCompanyEmpWage(string company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
         {
             CompanyEmpWage companyEmpWage = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
             this.companyEmpWageList.AddLast(companyEmpWage);
             this.companyToEmpWageMap.Add(company, companyEmpWage);
         }
-
         public void ComputeEmpWage()
         {
             foreach (CompanyEmpWage companyEmpWage in this.companyEmpWageList)
@@ -32,7 +30,6 @@ namespace EmployeeWageCalculation
                 Console.WriteLine(companyEmpWage.toString());
             }
         }
-
         public static int ComputeEmpWage(CompanyEmpWage companyEmpWage)
         {
             int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
