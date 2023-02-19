@@ -5,13 +5,13 @@ using System.Text;
 
 namespace EmployeeWageCalculation
 {
-    class EmpWageBuilderObject
+    class EmpWageBuilderObject : IComputeEmpWage
     {
         public const int FULL_TIME = 2;
         public const int PART_TIME = 1;
 
-        private int numOfCompany = 0;
-        private CompanyEmpWage[] companyEmpWagesArray;
+        public int numOfCompany = 0;
+        public CompanyEmpWage[] companyEmpWagesArray;
 
         public EmpWageBuilderObject()
         {
@@ -28,12 +28,12 @@ namespace EmployeeWageCalculation
         {
             for (int i = 0; i < numOfCompany; i++)
             {
-                companyEmpWagesArray[i].SetTotalEmpWage(this.ComputeEmpWage(this.companyEmpWagesArray[i]));
+                companyEmpWagesArray[i].SetTotalEmpWage(ComputeEmpWage(this.companyEmpWagesArray[i]));
                 Console.WriteLine(this.companyEmpWagesArray[i].toString());
             }
         }
 
-        private int ComputeEmpWage(CompanyEmpWage companyEmpWage)
+        public static int ComputeEmpWage(CompanyEmpWage companyEmpWage)
         {
             int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
             while (totalEmpHrs <= companyEmpWage.maxHoursPerMonth && totalWorkingDays < companyEmpWage.numOfWorkingDays)
