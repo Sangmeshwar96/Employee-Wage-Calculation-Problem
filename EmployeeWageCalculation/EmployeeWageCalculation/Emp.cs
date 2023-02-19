@@ -6,28 +6,59 @@ using System.Threading.Tasks;
 
 namespace EmployeeWage
 {
-    //Already Using class
-    public class Emp
+    public class EmpWageBuilderObject
     {
         public int fullTime = 1;
-        int empHr = 0;
-        int empWage = 0;
-        public void Wage(string comp, int wagePerHr)
+        public int partTime = 2;
+        public int empHr = 0;
+        public int empWage = 0;
+        public int totalWage = 0;
+        public const int FULL_TIME = 2;
+        public const int PART_TIME = 1;
+
+        private string company;
+        private int empRatePerHour;
+        private int numOfWorkingDays;
+        private int maxHoursPerMonth;
+        private int totalEmpWage;
+
+        public EmpWageBuilderObject(string company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
         {
+            this.company = company;
+            this.empRatePerHour = empRatePerHour;
+            this.numOfWorkingDays = numOfWorkingDays;
+            this.maxHoursPerMonth = maxHoursPerMonth;
+        }
+        public void computeEmpWage()
+        {
+            int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
             Random random = new Random();
-            int attendCheck = random.Next(0, 2);
-            if (attendCheck == fullTime)
+            while (totalEmpHrs <= this.maxHoursPerMonth && totalWorkingDays < this.numOfWorkingDays)
             {
-                empHr = 8;
-                Console.WriteLine($"\nThe Employee is present.");
+                totalWorkingDays++;
+                int check = random.Next(1, 4);
+                switch (check)
+                {
+                    case 2:
+                        empHrs = 8;
+                        break;
+                    case 1:
+                        empHrs = 4;
+                        break;
+                    default:
+                        empHrs = 0;
+                        break;
+                }
+                totalEmpHrs += empHrs;
+                Console.WriteLine("Days#:" + totalWorkingDays + " Emp Hrs :" + empHrs);
             }
-            else
-            {
-                empHr = 0;
-                Console.WriteLine($"\nThe Employee wage is absent.");
-            }
-            empWage = empHr * wagePerHr;
-            Console.WriteLine($"\nThe Empployee wage is {empWage}");
+            totalEmpWage = totalEmpHrs * this.empRatePerHour;
+            Console.WriteLine("Total Employee Wage for company : " + company + " is " + totalEmpWage);
+        }
+
+        public string toString()
+        {
+            return "Total Emp Wage for company : " + this.company + " is: " + this.totalEmpWage;
         }
     }
 }
