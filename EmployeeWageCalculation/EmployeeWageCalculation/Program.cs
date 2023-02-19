@@ -12,6 +12,7 @@ namespace EmployeeWageCalculation
             empWageBuilderObject.AddCompanyEmpWage("DMart", 20, 15, 100);
             empWageBuilderObject.AddCompanyEmpWage("Reliance", 10, 20, 200);
             empWageBuilderObject.ComputeEmpWage();
+            empWageBuilderObject.GetTotalWageForAllCompany();
         }
     }
 }

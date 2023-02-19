@@ -10,5 +10,6 @@ namespace EmployeeWageCalculation
     {
         public void AddCompanyEmpWage(string company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth);
         public void ComputeEmpWage();
+        void GetTotalWageForAllCompany();
     }
 }
