@@ -11,25 +11,24 @@ namespace EmployeeWageCalculation
         public const int PART_TIME = 1;
 
         public int numOfCompany = 0;
-        public CompanyEmpWage[] companyEmpWagesArray;
-
+        public LinkedList<CompanyEmpWage> companyEmpWageList;
         public EmpWageBuilderObject()
         {
-            this.companyEmpWagesArray = new CompanyEmpWage[5];
+            this.companyEmpWageList = new LinkedList<CompanyEmpWage>();
         }
 
         public void AddCompanyEmpWage(string company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth)
         {
-            companyEmpWagesArray[this.numOfCompany] = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
-            numOfCompany++;
+            CompanyEmpWage companyEmpWage = new CompanyEmpWage(company, empRatePerHour, numOfWorkingDays, maxHoursPerMonth);
+            this.companyEmpWageList.AddLast(companyEmpWage);
         }
 
         public void ComputeEmpWage()
         {
-            for (int i = 0; i < numOfCompany; i++)
+            foreach (CompanyEmpWage companyEmpWage in this.companyEmpWageList)
             {
-                companyEmpWagesArray[i].SetTotalEmpWage(ComputeEmpWage(this.companyEmpWagesArray[i]));
-                Console.WriteLine(this.companyEmpWagesArray[i].toString());
+                companyEmpWage.SetTotalEmpWage(ComputeEmpWage(companyEmpWage));
+                Console.WriteLine(companyEmpWage.toString());
             }
         }
 
